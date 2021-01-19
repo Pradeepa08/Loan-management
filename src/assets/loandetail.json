@@ -1,0 +1,12 @@
+{
+"FirstName": "Pradeepa", 
+"LastName": "S",
+"LoanNumber":5000,
+"PropertyAddress":"chennai",
+"LoanAmount":50000,
+"LoanType":"PersonalLoan",
+"LoanTerm":"2 years",
+"LoanStatus":"Approved",
+"OriginationDate":"1/15/2021",
+"OriginationAccount":"0005-123-456-7"
+}

@@ -1,0 +1,56 @@
+<form>
+  <div class="row title">
+    <div class="col-xs-3">
+      <label for="first-name"><b>FirstName</b></label>
+      <input type="text" placeholder="Enter FirstName" name="firstname" [(ngModel)]="firstname"><br>
+    </div>
+    <div class="col-xs-3">
+      <label for="last-name"><b>LastName</b></label>
+      <input type="text" placeholder="Enter LastName" name="lastname" [(ngModel)]="lastname"><br>
+    </div>
+    <div class="col-xs-3">
+      <label for="laon-number"><b>LoanNumber</b></label>
+      <input type="text" placeholder="Enter LoanNumber" name="loannumber" [(ngModel)]="loannumber">
+    </div>
+  </div>
+  <div class="box">
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-primary" (click)="loanSearch()">Search</button>
+      </div>
+      <div [hidden]="!isShown" class="row container-fluid" id="divshow">
+        <div class="container" *ngIf="loanDetail">
+
+          <table id="loans">
+            <tr>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>LoanNumber</th>
+              <th>LoanAmount</th>
+              <th>LoanType</th>
+              <th>LoanStatus</th>
+              <th>OriginationDate</th>
+              <th>OriginationAccount</th>
+            </tr>
+            <tbody>
+              <td>{{ loanDetail.FirstName }}</td>
+              <td>{{ loanDetail.LastName }}</td>
+              <td>{{ loanDetail.LoanNumber }}</td>
+              <td>{{ loanDetail.LoanAmount }}</td>
+              <td>{{ loanDetail.LoanType }}</td>
+              <td>{{loanDetail.LoanStatus}}</td>
+              <td>{{loanDetail.OriginationDate}}</td>
+              <td>{{loanDetail.OriginationAccount}}</td>
+            </tbody>
+          </table>
+        </div>
+        <div [hidden]="shown" class="row container-fluid" id="divshow">
+          <div class="box">
+
+            <button *ngIf="role=='admin'" type="edit" class="btn btn-primary" (click)="edit(loanDetail.LoanNumber)">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

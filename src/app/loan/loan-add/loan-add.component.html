@@ -1,0 +1,102 @@
+<form id="edit-form" [formGroup]="addForm" (click)="add()" novalidate>
+    <div class="container">
+        <h1>Add Loan</h1>
+        <p>Please fill in this form to add an new loan.</p>
+        <hr>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-4"> <label class="centre-block">FirstName:
+                  <input class="form-control" formControlName="firstname">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('firstname').touched && addForm.get('firstname').hasError('required')">*First name required</div>
+                    <div class="text-danger" *ngIf="addForm.get('firstname').touched && (addForm.get('firstname').hasError('pattern'))">*First name must contain only alphabets</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="centre-block">LastName:
+                  <input class="form-control" formControlName="lastname">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('lastname').touched && addForm.get('lastname').hasError('required')">*Last name required</div>
+                    <div class="text-danger" *ngIf="addForm.get('lastname').touched && (addForm.get('lastname').hasError('pattern'))">*Last name must contain only alphabets</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="col-xs-4" class="centre-block">LoanNumber:
+                  <input   class="form-control" formControlName="loannumber">
+                  </label>
+                    <div class="text-danger" *ngIf="addForm.get('loannumber').touched && addForm.get('loannumber').hasError('required')">*LoanNumber required</div>
+                    <div class="text-danger" *ngIf="addForm.get('loannumber').touched && (addForm.get('loannumber').hasError('pattern'))">*Loan number contain only numbers</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="centre-block">PropertyAddress:
+                  <input class="form-control" formControlName="propertyaddress">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('propertyaddress').touched && addForm.get('propertyaddress').hasError('required')">*Property Address required</div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="centre-block">LoanAmount:
+                  <input class="form-control" formControlName="loanamount">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('loanamount').touched && addForm.get('loanamount').hasError('required')">*Loan Amount required</div>
+                    <div class="text-danger" *ngIf="addForm.get('loanamount').touched && (addForm.get('loanamount').hasError('pattern'))">*Loan Amount contain only numbers</div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="centre-block">LoanType:
+                  <input class="form-control" formControlName="loantype">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('loantype').touched && addForm.get('loantype').hasError('required')">*Loan type required</div>
+                    <div class="text-danger" *ngIf="addForm.get('loantype').touched && (addForm.get('loantype').hasError('pattern'))">*Loan type contain only alphabets</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="centre-block">LoanTerm:
+                  <input class="form-control" formControlName="loanterm">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('loanterm').touched && addForm.get('loanterm').hasError('required')">*Loan term required</div>
+                    <div class="text-danger" *ngIf="addForm.get('loanterm').touched && (addForm.get('loanterm').hasError('pattern'))">*Loan term should be valid format </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="centre-block">LoanStatus:
+                  <input class="form-control" formControlName="loanstatus">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('loanstatus').touched && addForm.get('loanstatus').hasError('required')">*Loan status required</div>
+                    <div class="text-danger" *ngIf="addForm.get('loanstatus').touched && (addForm.get('loanstatus').hasError('pattern'))">*Loan status contain only alphabets</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="centre-block">OriginationDate:
+                  <input class="form-control" formControlName="Originationdate">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('Originationdate').touched && addForm.get('Originationdate').hasError('required')">*Origination date required</div>
+                    <div class="text-danger" *ngIf="addForm.get('Originationdate').touched && (addForm.get('Originationdate').hasError('pattern'))">*Origination date should be in valid format</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="centre-block">OriginationAccount:
+                  <input class="form-control" formControlName="Originationaccount">
+            </label>
+                    <div class="text-danger" *ngIf="addForm.get('Originationaccount').touched && addForm.get('Originationaccount').hasError('required')">*Origination account required</div>
+                    <div class="text-danger" *ngIf="addForm.get('Originationaccount').touched && (addForm.get('Originationaccount').hasError('pattern'))">*Origination account should be in valid format</div>
+                </div>
+            </div>
+
+
+        </div>
+        <button type="button" class="btn btn-default">Add</button>
+    </div>
+</form>

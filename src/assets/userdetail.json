@@ -1,0 +1,27 @@
+
+ 
+{
+    "user":
+  { 
+   "email":"pradee@gmail.com",
+   "password":"password@12",
+   "role":"user" 
+   },
+  "admin":
+  { 
+   "email":"srini@gmail.com",
+   "password":"password@123",
+   "role":"admin" 
+   }
+}
+
+
+
+
+  
+    
+
+
+
+ 
+      
