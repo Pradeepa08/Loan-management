@@ -11,7 +11,6 @@ export class LoanComponent implements OnInit {
   constructor(private route: Router, private router: ActivatedRoute) { }
   ngOnInit(): void {
     this.router.paramMap.subscribe((params: ParamMap) => { this.role = params.get('role') });
-    console.log(this.role);
   }
   onSearch() {
     this.route.navigate(['/loan-search', this.role])

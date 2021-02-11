@@ -2,24 +2,24 @@
   <div class="row title">
     <div class="col-xs-3">
       <label for="first-name"><b>FirstName</b></label>
-      <input type="text" placeholder="Enter FirstName" name="firstname" [(ngModel)]="firstname"><br>
+      <input type="text" placeholder="Enter FirstName" name="firstName" [(ngModel)]="firstName"><br>
     </div>
     <div class="col-xs-3">
       <label for="last-name"><b>LastName</b></label>
-      <input type="text" placeholder="Enter LastName" name="lastname" [(ngModel)]="lastname"><br>
+      <input type="text" placeholder="Enter LastName" name="lastName" [(ngModel)]="lastName"><br>
     </div>
     <div class="col-xs-3">
       <label for="laon-number"><b>LoanNumber</b></label>
-      <input type="text" placeholder="Enter LoanNumber" name="loannumber" [(ngModel)]="loannumber">
+      <input type="text" placeholder="Enter LoanNumber" name="loanNumber" [(ngModel)]="loanNumber">
     </div>
   </div>
   <div class="box">
     <div class="row">
       <div class="col">
-        <button type="submit" class="btn btn-primary" (click)="loanSearch()">Search</button>
+        <button  class="btn btn-primary" (click)="loanSearch()">Search</button>
       </div>
       <div [hidden]="!isShown" class="row container-fluid" id="divshow">
-        <div class="container" *ngIf="loanDetail">
+        <div class="container" *ngIf="loanDetails">
 
           <table id="loans">
             <tr>
@@ -28,28 +28,43 @@
               <th>LoanNumber</th>
               <th>LoanAmount</th>
               <th>LoanType</th>
+              <th>LoanTerm</th>
+              <th>PropertyAddress</th>
+              <th>LoanManagementFees</th>
               <th>LoanStatus</th>
               <th>OriginationDate</th>
               <th>OriginationAccount</th>
+             
             </tr>
             <tbody>
-              <td>{{ loanDetail.FirstName }}</td>
-              <td>{{ loanDetail.LastName }}</td>
-              <td>{{ loanDetail.LoanNumber }}</td>
-              <td>{{ loanDetail.LoanAmount }}</td>
-              <td>{{ loanDetail.LoanType }}</td>
-              <td>{{loanDetail.LoanStatus}}</td>
-              <td>{{loanDetail.OriginationDate}}</td>
-              <td>{{loanDetail.OriginationAccount}}</td>
+              <tr *ngFor="let loanDetail of loanDetails">
+              <td>{{ loanDetail.firstName }}</td>
+              <td>{{ loanDetail.lastName }}</td>
+              <td>{{ loanDetail.loanNumber }}</td>
+              <td>{{ loanDetail.loanAmount }}</td>
+              <td>{{ loanDetail.loanType }}</td>
+                            <td>{{ loanDetail.loanTerm }}</td>
+                                          <td>{{ loanDetail.propertyAddress }}</td>
+                                                        <td>{{ loanDetail.loanManagementFees }}</td>
+
+              <td>{{loanDetail.loanStatus}}</td>
+              <td>{{loanDetail.originationDate}}</td>
+              <td>{{loanDetail.originationAccount}}</td>
+               <div [hidden]="shown" class="row container-fluid" id="divshow">
+          <div class="box">
+              <td button *ngIf="role=='admin'" type="edit" class="btn btn-primary" (click)="edit(loanDetail.loanNumber)" >Edit</td>
+          </div>
+               </div>
+              </tr>
             </tbody>
           </table>
         </div>
-        <div [hidden]="shown" class="row container-fluid" id="divshow">
+        <!--<div [hidden]="shown" class="row container-fluid" id="divshow">
           <div class="box">
 
             <button *ngIf="role=='admin'" type="edit" class="btn btn-primary" (click)="edit(loanDetail.LoanNumber)">Edit</button>
-          </div>
-        </div>
+          </div>-->
+        <!--</div>-->
       </div>
     </div>
   </div>

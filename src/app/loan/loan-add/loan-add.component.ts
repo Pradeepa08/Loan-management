@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ParamMap } from "@angular/router/router";
-import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
+import { ParamMap } from '@angular/router/router';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoanService } from "src/app/loan.service";
 
 @Component({
   selector: 'app-loan-add',
@@ -8,39 +9,44 @@ import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
   styleUrls: ['./loan-add.component.css']
 })
 export class LoanAddComponent implements OnInit {
-  firstname: string;
-  lastname: string;
-  loannumber: number;
-  propertyaddress: string;
-  loanamount: number;
-  loantype: string;
-  loanterm: string;
-  originationdate: string;
-  originationaccount: string;
+    error: boolean;
+    errorMessage: any;
+  
   addForm: FormGroup;
   isAdded: boolean = false;
-
-  constructor() { }
+borrowerInformation:FormGroup;
+  constructor(private service:LoanService) { }
 
   ngOnInit(): void {
 
 
     this.addForm = new FormGroup(
       {
-        'firstname': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]),
-        'lastname': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]),
-        'loannumber': new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
-        'propertyaddress': new FormControl('', [Validators.required]),
-        'loanamount': new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
-        'loantype': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]),
-        'loanterm': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z,0-9, ]*$')]),
-        'loanstatus': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]),
-        'Originationdate': new FormControl('', [Validators.required, Validators.pattern('^[0-9,/]*$')]),
-        'Originationaccount': new FormControl('', [Validators.required, Validators.pattern('^[0-9,-]*$')]),
+borrowerInformation:new FormGroup({
+        'firstName': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]),
+        'lastName': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]),
+}),
+        // 'loanNumber': new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+        'loanManagementFees': new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+        'propertyAddress': new FormControl('', [Validators.required]),
+        'loanAmount': new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+        'loanType': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]),
+        'loanTerm': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z,0-9, ]*$')]),
+        'loanStatus': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z]*$')]),
+        'originationDate': new FormControl('', [Validators.required, Validators.pattern('^[0-9,/]*$')]),
+        'originationAccount': new FormControl('', [Validators.required, Validators.pattern('^[0-9,-]*$')]),
       }
     );
   }
-  add() {
-    console.log(this.addForm.value);
+  add(addForm:FormGroup):void {
+  
+    this.service.loanAdd(addForm.value).subscribe((data)=>{if(data!=null){this.isAdded=true}
+    },(error)=>{
+      if(error){
+        this.error=true;
+        this.errorMessage="error occured";
+      }
+    });
+    
   }
 }

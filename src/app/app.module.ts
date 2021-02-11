@@ -10,9 +10,10 @@ import { LoanSearchComponent } from './loan/loan-search/loan-search.component';
 import { LoanDetailComponent } from './loan/loan-search/loan-detail/loan-detail.component';
 import { LoanAddComponent } from './loan/loan-add/loan-add.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoanEditComponent } from './loan/loan-search/loan-edit/loan-edit.component'
-import { LoanService } from "src/app/loan.service";
+import { LoanEditComponent } from './loan/loan-search/loan-edit/loan-edit.component';
+import { LoanService } from 'src/app/loan.service';
 import { HeaderComponent } from './header/header.component';
+// import { AuthgaurdserviceService } from "src/app/authgaurdservice.service";
 
 @NgModule({
   declarations: [

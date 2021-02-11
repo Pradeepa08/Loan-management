@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginModel } from './login.model';
 import { LoanService } from "src/app/loan.service";
+import { HttpClient } from "@angular/common/http";
 
-// import{DataService} from '../service/service.component';
 
 @Component({
   selector: 'app-login',
@@ -11,26 +11,21 @@ import { LoanService } from "src/app/loan.service";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  users: any;
   result: any;
   userdetail: any
-  email: string;
+  userId: number;
   password: string;
   role: string;
   errorMessage: any;
+  loggedin:boolean;
+ 
   login = new LoginModel();
 
-  constructor(private route: ActivatedRoute, private router: Router, private dataservice: LoanService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private dataservice: LoanService,private http:HttpClient) { }
 
   logInUser() {
-    this.dataservice.login().subscribe((data) => {
-    this.userdetail = data;
-      if (this.userdetail.user.email == this.email && this.userdetail.user.password == this.password && this.userdetail.user.role == "user") {
-        this.router.navigate(['/loan', this.userdetail.user.role]);
-      }
-      if (this.userdetail.admin.email == this.email && this.userdetail.admin.password == this.password && this.userdetail.admin.role == "admin") {
-        this.router.navigate(['/loan', this.userdetail.admin.role]);
-      }
-    });
+    this.dataservice.login(this.userId,this.password);
   }
   ngOnInit(): void {
   }

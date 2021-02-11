@@ -3,13 +3,13 @@
 {
     "user":
   { 
-   "email":"pradee@gmail.com",
+   "userId":12,
    "password":"password@12",
    "role":"user" 
    },
   "admin":
   { 
-   "email":"srini@gmail.com",
+   "userId":123,
    "password":"password@123",
    "role":"admin" 
    }

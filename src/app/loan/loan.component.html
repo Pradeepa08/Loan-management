@@ -1,6 +1,8 @@
 <nav>
   <ul>
-    <li><a routerLink="/loan-search/admin" routerLinkActive="active">SearchLoan</a></li>
-    <li *ngIf="role=='admin'"><a routerLink="/loan-add" routerLinkActive="active">AddLoan</a></li>
+    <li><a  routerLinkActive="active" (click)="onSearch()">SearchLoan</a></li>
+    <li *ngIf="role=='admin'"><a  routerLinkActive="active"(click)="onAdd()">AddLoan</a></li>
   </ul>
 </nav>
+<!--routerLink="/loan-search"-->
+<!--routerLink="/loan-add"-->

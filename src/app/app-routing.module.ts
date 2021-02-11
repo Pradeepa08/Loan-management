@@ -5,21 +5,24 @@ import { LoanComponent } from './loan/loan.component';
 import { LoanSearchComponent } from './loan/loan-search/loan-search.component';
 import { LoanDetailComponent } from './loan/loan-search/loan-detail/loan-detail.component';
 import { LoanAddComponent } from './loan/loan-add/loan-add.component';
-import { LoanEditComponent } from './loan/loan-search/loan-edit/loan-edit.component'
+import { LoanEditComponent } from './loan/loan-search/loan-edit/loan-edit.component';
+import { AuthguardService } from "src/app/service/authguard.service";
+
 const routes: Routes = [
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: 'loan/:role', component: LoanComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'loan-search/:role', component: LoanSearchComponent },
-      { path: 'loan-add', component: LoanAddComponent },
-      { path: 'loan-detail', component: LoanDetailComponent },
-      { path: 'loan-edit/:loannumber', component: LoanEditComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: '**', component: LoginComponent }
+       { path: '', component: LoginComponent },
+      { path: 'loan/:role', component: LoanComponent, canActivate:[AuthguardService]},
+      { path: 'login', component: LoginComponent  },
+      { path: 'loan-search/:role', component: LoanSearchComponent , canActivate:[AuthguardService] },
+      { path: 'loan-add', component: LoanAddComponent, canActivate:[AuthguardService] },
+      { path: 'loan-detail', component: LoanDetailComponent, canActivate:[AuthguardService]  },
+      { path: 'loan-edit/:loanNumber', component: LoanEditComponent, canActivate:[AuthguardService]  }
+    //  canActivate:[AuthgaurdserviceService]
+      // { path: '**', component: LoginComponent }
     ])],
   exports: [RouterModule]
 })

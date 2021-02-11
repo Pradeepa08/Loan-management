@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { LoanService } from "src/app/loan.service";
+import { LoanService } from 'src/app/loan.service';
 
 describe('LoanService', () => {
     let service: LoanService;
@@ -9,8 +9,8 @@ describe('LoanService', () => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule],
         });
-        service = TestBed.inject(LoanService)
-        httpMock = TestBed.inject(HttpTestingController)
+        service = TestBed.inject(LoanService);
+        httpMock = TestBed.inject(HttpTestingController);
     });
     afterEach(() => {
         httpMock.verify();
@@ -23,7 +23,7 @@ describe('LoanService', () => {
             expect(user).toBeDefined();
             done();
         }
-        )
+        );
         const testRequest = httpMock.expectOne('./assets/loandetail.json');
         expect(testRequest.request.method).toBe('GET');
         testRequest.flush([{}]);
@@ -34,9 +34,10 @@ describe('LoanService', () => {
             expect(user).toBeDefined();
             done();
         }
-        )
+        );
         const testRequest = httpMock.expectOne('./assets/userdetail.json');
         expect(testRequest.request.method).toBe('GET');
         testRequest.flush([{ email: 'srini@gmail.com', password: 'password@123', role: 'admin' }, { email: 'pradee@gmail.com', password: 'password@12', role: 'user' }]);
     });
+    
 });
